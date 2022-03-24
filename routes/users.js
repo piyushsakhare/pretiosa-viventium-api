@@ -47,8 +47,8 @@ router.delete("/:id", verify, async (req,res) => {
 
 //Get all Users
 
-router.get("/",  async (req,res) => {
-    if(true){
+router.get("/", verify,  async (req,res) => {
+    if(isAdmin){
         try{
 
             const users = await User.find()
@@ -71,18 +71,7 @@ router.get("/stats", verify, async (req, res) => {
         const lastYear = today.setFullYear(today.setFullYear() - 1)
 
         try{
-            const data = await User.aggregate([
-                {
-                    $project : {
-                        month : { $month : "$createdAt" }
-                    }
-                }, {
-                    $group : {
-                        _id : "$month",
-                        total : { $sum : 1 }
-                    }
-                }
-            ])
+            const data = await User.find().limit(5)
             res.status(201).json(data)
         }catch(err) {
             res.status(403).json(err)
