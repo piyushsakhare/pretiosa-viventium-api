@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+const cors = require("cors")
 const authRoute = require("./routes/auth")
 const destinationRoute = require("./routes/destinations")
 const userRoute = require("./routes/users")
@@ -23,12 +24,10 @@ mongoose.connect(process.env.MONGO_URL , {
 })
 
 
- app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://pretiosa-viventium-admin.netlify.app")
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
-    res.header("Access-Control-Allow-Headers", "Content-Type")
-    next()
-})
+ app.use(cors({
+     origin : "*",
+     credentials : true
+ }))
 
 app.use(express.json())
 
