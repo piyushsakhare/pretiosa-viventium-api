@@ -29,6 +29,13 @@ const corsOptions ={
     optionSuccessStatus:200,
  }
 
+ app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
+    res.header("Access-Control-Allow-Headers", "Content-Type")
+    next()
+})
+
 app.use(express.json())
 
 app.use("/api/auth", authRoute)
@@ -36,12 +43,7 @@ app.use("/api/users", userRoute)
 app.use("/api/destinations", destinationRoute)
 app.use(cors(corsOptions))
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
-    res.header("Access-Control-Allow-Headers", "Content-Type")
-    next()
-})
+
 
 
 app.listen(port, () => {
