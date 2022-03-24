@@ -9,7 +9,6 @@ const app = express()
 
 dotenv.config()
 
-const host = process.env.HOST || 3000 
 
 const port = process.env.PORT || 8800
 
@@ -37,14 +36,6 @@ app.use("/api/users", userRoute)
 app.use("/api/destinations", destinationRoute)
 app.use(cors(corsOptions))
 
-const cors_proxy = require('cors-anywhere');
-cors_proxy.createServer({
-    originWhitelist: [], // Allow all origins
-    requireHeader: ['origin', 'x-requested-with'],
-    removeHeaders: ['cookie', 'cookie2']
-}).listen(port, host, () => {
-    console.log('Running CORS Anywhere on ' + host + ':' + port);
-});
 
 app.listen(port, () => {
     console.log(`Server is running`)
