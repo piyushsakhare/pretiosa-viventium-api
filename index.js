@@ -1,7 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
-const cors = require("cors");
 const authRoute = require("./routes/auth")
 const destinationRoute = require("./routes/destinations")
 const userRoute = require("./routes/users")
@@ -23,11 +22,6 @@ mongoose.connect(process.env.MONGO_URL , {
     console.log(err)
 })
 
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
- }
 
  app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -41,7 +35,7 @@ app.use(express.json())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/destinations", destinationRoute)
-app.use(cors(corsOptions))
+
 
 
 
