@@ -35,10 +35,6 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/destinations", destinationRoute)
 
-
-
-
-
 app.listen(port, () => {
     console.log(`Server is running`)
 })
