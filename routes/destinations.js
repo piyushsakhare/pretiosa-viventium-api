@@ -71,7 +71,7 @@ router.get("/find/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     const type = req.query.type
     const location = req.query.location
-    const Destinations = []
+    const Destinations = {}
     try{
         if(type){
             if(location) {
