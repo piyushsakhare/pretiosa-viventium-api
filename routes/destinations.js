@@ -71,7 +71,7 @@ router.get("/find/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     const type = req.query.type
     const location = req.query.location
-    let Destinations = []
+    const Destinations = []
     try{
         if(type){
             if(location) {
@@ -84,9 +84,7 @@ router.get("/", verify, async (req, res) => {
             ])
         }
             else {
-                Destinations = await Destination.find().aggregate([
-                    { $match : { size : 12}}
-                ])
+                Destinations = await Destination.find()
             }
 
             res.status(200).json(Destinations)
