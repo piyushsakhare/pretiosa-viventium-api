@@ -68,7 +68,7 @@ router.get("/find/:id", verify, async (req, res) => {
 
 // Get all
 
-router.get("/", verify, async (req, res) => {
+router.get("/", async (req, res) => {
     const type = req.query.type
     const location = req.query.location
     try{
