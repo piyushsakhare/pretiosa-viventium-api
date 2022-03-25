@@ -47,8 +47,8 @@ router.delete("/:id", verify, async (req,res) => {
 
 //Get all Users
 
-router.get("/", verify,  async (req,res) => {
-    if(req.user.isAdmin){
+router.get("/",   async (req,res) => {
+    if(true){
         try{
 
             const users = await User.find()
