@@ -1,7 +1,5 @@
 const router = require("express").Router()
-const User = require("../models/User")
 const Destination = require("../models/Destination")
-const CryptoJS = require("crypto-js")
 const verify = require("./verifyToken")
 
 // Create
