@@ -11,7 +11,8 @@ const DestinationSchema = new mongoose.Schema({
     },
     price : {
         type: String,
-        required : true
+        required : true,
+        unique : false
     },
     image1 : {
         type : String,
