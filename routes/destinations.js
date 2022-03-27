@@ -75,12 +75,12 @@ router.get("/", async (req, res) => {
     try{
         if(type){
             if(location) {
-                const Destinations = await Destination.find().aggregate([
+                const Destinations = await Destination.aggregate([
                     { $match : { type : type, location : location}}
                 ])
                 res.status(200).json(Destinations)
             }
-            const Destinations = await Destination.find().aggregate([
+            const Destinations = await Destination.aggregate([
                 { $match : { type : type}}
             ])
             res.status(200).json(Destinations)
