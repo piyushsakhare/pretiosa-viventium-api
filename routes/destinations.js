@@ -75,8 +75,9 @@ router.get("/", async (req, res) => {
     try{
         if(type){
             if(location) {
+                const partialToMatch= new RegExp(location,'i')
                 const Destinations = await Destination.aggregate([
-                    { $match : { type : type, location : /location/i }}
+                    { $match : { type : type, location : partialToMatch }}
                 ])
                 res.status(200).json(Destinations)
             }
