@@ -20,10 +20,10 @@ router.put("/:id", verify, async (req,res) => {
             res.status(200).json(updatedUser)
 
         }catch(err) {
-            req.statusCode(500).json(err)
+            res.status(500).json(err)
         }
     }else {
-        req.statusCode(403).json("token not valid")
+        res.status(403).json("token not valid")
     }
 })
 
@@ -38,10 +38,10 @@ router.delete("/:id", verify, async (req,res) => {
             res.status(200).json("User has been deleted")
 
         }catch(err) {
-            req.statusCode(500).json(err)
+            res.status(500).json(err)
         }
     }else {
-        req.statusCode(403).json("token not valid")
+        res.status(403).json("token not valid")
     }
 })
 
@@ -56,10 +56,10 @@ router.get("/", verify,  async (req,res) => {
             res.status(200).json(users)
 
         }catch(err) {
-            req.statusCode(500).json(err)
+            res.status(500).json(err)
         }
     }else {
-        req.statusCode(403).json("token not valid")
+        res.status(403).json("token not valid")
     }
 })
 
