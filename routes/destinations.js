@@ -67,7 +67,7 @@ router.get("/find/:id", verify, async (req, res) => {
         }
 })
 
-// Get all
+// Get all destinations
 
 router.get("/", async (req, res) => {
     const type = req.query.type
